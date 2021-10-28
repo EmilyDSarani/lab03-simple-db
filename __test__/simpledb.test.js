@@ -12,6 +12,11 @@ describe('SimpleDb', () => {
   });
   it('should keep my files safe', () => {
     const dataBase = new SimpleDb(rootDir);
+    const object = { counter: 'white', granite: true };
+
+
+    return dataBase
+      .save(object);
       
   });
 });
