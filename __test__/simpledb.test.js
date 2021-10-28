@@ -1,5 +1,5 @@
 const SimpleDb = require('../lib/Simpledb');
-const { mkdir, rm } = require('fs');
+const { mkdir, rm } = require('fs/promises');
 
 describe('SimpleDb', () => {
   const rootDir = './__test__/store';
@@ -10,7 +10,7 @@ describe('SimpleDb', () => {
     );
 
   });
-  it('should keep my files safe', () => {
+  it('should save a file', () => {
     const dataBase = new SimpleDb(rootDir);
     const object = { counter: 'white', granite: true };
 
