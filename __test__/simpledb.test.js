@@ -10,14 +10,14 @@ describe('SimpleDb', () => {
     );
 
   });
-  it('should save a file', () => {
+  it('should save a file', async () => {
     const dataBase = new SimpleDb(rootDir);
     const object = { counter: 'white', granite: true };
 
 
     return dataBase
-      .save(object)
-      .then((otherFile) => expect(otherFile).toEqual(object));
+      .save(object) //saving the object
+      .then(() => expect(object.id).toEqual(expect.any(String))); //it can now tell us if it has an id
       
   });
 });
