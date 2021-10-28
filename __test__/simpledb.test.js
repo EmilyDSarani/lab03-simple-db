@@ -16,7 +16,8 @@ describe('SimpleDb', () => {
 
 
     return dataBase
-      .save(object);
+      .save(object)
+      .then((otherFile) => expect(otherFile).toEqual(object));
       
   });
 });
