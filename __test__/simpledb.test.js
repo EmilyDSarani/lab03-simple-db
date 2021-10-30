@@ -20,4 +20,5 @@ describe('SimpleDb', () => {
       .then(() => expect(object.id).toEqual(expect.any(String))); //it can now tell us if it has an id
       
   });
+  
 });
