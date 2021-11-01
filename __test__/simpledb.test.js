@@ -20,14 +20,14 @@ describe('SimpleDb', () => {
       .then(() => expect(object.id).toEqual(expect.any(String))); //it can now tell us if it has an id
       
   });
-  it ('should get the id', () => {
+  it ('should get the id', async () => {
     const dataBase = new SimpleDb(rootDir);
     const object = { text: 'aint no mountain high enough' };
 
-    return dataBase
-      .save(object)
-      .then(() => dataBase.get(object.id))
-      .then((file) => expect(file).toEqual(object));
+    await dataBase
+      .save(object);
+    const file = await dataBase.get(object.id);
+    return expect(file).toEqual(object);
 
   });
 
