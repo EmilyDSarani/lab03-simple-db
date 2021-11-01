@@ -20,5 +20,15 @@ describe('SimpleDb', () => {
       .then(() => expect(object.id).toEqual(expect.any(String))); //it can now tell us if it has an id
       
   });
-  
+  it ('should get the id', () => {
+    const dataBase = new SimpleDb(rootDir);
+    const object = { text: 'aint no mountain high enough' };
+
+    return dataBase
+      .save(object)
+      .then(() => dataBase.get(object.id))
+      .then((object) => expect(object).toEqual(expect.any(Object)));
+
+  });
+
 });
