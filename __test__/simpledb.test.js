@@ -27,8 +27,9 @@ describe('SimpleDb', () => {
     return dataBase
       .save(object)
       .then(() => dataBase.get(object.id))
-      .then((object) => expect(object).toEqual(expect.any(Object)));
+      .then((file) => expect(file).toEqual(object));
 
   });
 
+  
 });
