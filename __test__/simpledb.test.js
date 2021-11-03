@@ -30,6 +30,18 @@ describe('SimpleDb', () => {
     return expect(file).toEqual(object);
 
   });
+  it ('should get all files', async () => {
+    const dataBase = new SimpleDb(rootDir);
+    const object1 = { text: 'You aint never had a friend like me' };
+    const object2 = { text: 'Prince Ali, fabulous he, Ali Abbawa' };
+
+    await dataBase
+      .save(object1)
+      .save(object2);
+    const file = await dataBase.get(object1, object2);
+    return expect(file).toEqual(object1, object2);
+
+  });
 
   
 });
