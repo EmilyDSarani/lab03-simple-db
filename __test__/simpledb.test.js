@@ -34,12 +34,21 @@ describe('SimpleDb', () => {
     const dataBase = new SimpleDb(rootDir);
     const object1 = { text: 'You aint never had a friend like me' };
     const object2 = { text: 'Prince Ali, fabulous he, Ali Abbawa' };
+    const expectation = [{
+      id: expect.any(String),
+      text: expect.any(String),
+    },
+    {
+      id: expect.any(String),
+      text: expect.any(String),
+    }
+    ];
 
     await dataBase
       .save(object1)
-      .save(object2);
-    const file = await dataBase.get(object1, object2);
-    return expect(file).toEqual(object1, object2);
+      .then(() => dataBase.save(object2))
+      .then(() => dataBase.getAll())
+      .then((files) => expect(files).toEqual(expectation));
 
   });
 
